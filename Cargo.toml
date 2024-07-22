@@ -1,0 +1,35 @@
+[package]
+edition = "2021"
+name = "ambiq-apollo4p-pac"
+description = "Peripheral access API for Ambiq Apollo 4 Plus microcontrollers"
+version = "1.0.0"
+authors = ["Will Hedgecock <will.hedgecock@gmail.com>"]
+license = "MIT"
+documentation = "https://docs.rs/ambiq-apollo4p-pac/latest/"
+readme = "README.md"
+homepage = "https://github.com/hedgetechllc/ambiq-apollo4p-pac"
+repository = "https://github.com/hedgetechllc/ambiq-apollo4p-pac"
+keywords = ["ambiq", "apollo", "svd2rust", "no_std", "embedded"]
+categories = ["embedded", "no-std"]
+publish = true
+
+[dependencies]
+critical-section = { version = "1.1", optional = true }
+cortex-m = "0.7"
+cortex-m-rt = { version = "0.7", optional = true }
+vcell = "0.1"
+
+[features]
+rt = ["cortex-m-rt/device"]
+
+[profile.release]
+codegen-units = 4096
+debug = false
+debug-assertions = false
+incremental = false
+lto = true
+opt-level = 3
+overflow-checks = false
+panic = "abort"
+rpath = false
+strip = "symbols"
